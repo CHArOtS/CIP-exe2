@@ -1,0 +1,12 @@
+             precision    recall  f1-score   support
+
+       B-PER       0.74      0.73      0.73       669
+       I-PER       0.71      0.72      0.71      1232
+       B-LOC       0.70      0.72      0.71      1273
+       I-LOC       0.64      0.67      0.66      2008
+       B-ORG       0.53      0.52      0.52       481
+       I-ORG       0.53      0.57      0.55      2251
+
+   micro avg       0.63      0.65      0.64      7914
+   macro avg       0.64      0.66      0.65      7914
+weighted avg       0.63      0.65      0.64      7914
