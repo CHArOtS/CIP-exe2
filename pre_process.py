@@ -3,8 +3,8 @@ import re
 
 # 初始化参数
 fp = 'data/train.txt'  # 填写数据集路径
-op = 'data/train_res.txt'  # 填写输出路径
-
+op = 'data/train_process.txt'  # 填写输出路径
+# 上述路径修改为test.txt和test_process.txt即可处理测试集
 
 # 读取数据集
 def read_data(filepath):

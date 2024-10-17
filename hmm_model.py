@@ -115,6 +115,15 @@ class HMM_model:
         for i in range(len(s)):
             print(s[i] + results[i], end=' | ')
 
+    def predict_to_List(self, s):
+        results = self.viterbi(s)
+        char_list = []
+        tag_list = []
+        for i in range(len(s)):
+            char_list.append(s[i])
+            tag_list.append(results[i])
+        return char_list, tag_list
+
     def valid(self, valid_data):
         y_pred = []
         # 遍历验证集每一条数据，使用维特比算法得到预测序列，并加到列表中
@@ -123,8 +132,8 @@ class HMM_model:
         return y_pred
 
 
-train_data = data_read('./data/train_res.txt')
-valid_data = data_read('./data/test_res.txt')
+train_data = data_read('./data/train_process.txt')
+valid_data = data_read('./data/test_process.txt')
 print("=====================================")
 print('训练集长度:', len(train_data))
 print('验证集长度:', len(valid_data))
@@ -159,3 +168,4 @@ print("\n")
 model.predict('张三在北京的微软公司工作。')
 print("\n")
 model.predict('马云在杭州创办了阿里巴巴。')
+

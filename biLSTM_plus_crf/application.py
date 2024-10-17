@@ -22,12 +22,12 @@ device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
 # 建立中文词表，扫描训练集所有字符得到，'PAD'在batch填充时使用，'UNK'用于替换字表以外的新字符
-vocab = get_vocab('../data/train_res.txt')
+vocab = get_vocab('../data/train_process.txt')
 # 建立标签字典，扫描训练集所有字符得到
-label_map = get_label_map('../data/train_res.txt')
+label_map = get_label_map('../data/train_process.txt')
 
-train_dataset = Model_Dataset('../data/train_res.txt', vocab, label_map)
-valid_dataset = Model_Dataset('../data/test_res.txt', vocab, label_map)
+train_dataset = Model_Dataset('../data/train_process.txt', vocab, label_map)
+valid_dataset = Model_Dataset('../data/test_process.txt', vocab, label_map)
 print("====================================")
 print('训练集长度:', len(train_dataset))
 print('验证集长度:', len(valid_dataset))
