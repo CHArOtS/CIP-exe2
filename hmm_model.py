@@ -39,6 +39,16 @@ def data_read(path):
     return data
 
 
+def output_data(output_path, data):
+    with open(output_path, 'w', encoding='utf-8') as f:
+        for c in data:
+            if c[0] == '':
+                f.write('\n')
+            else:
+                f.write(c[0] + '  ' + c[1] + '\n')
+    print('\n数据已输出至', output_path)
+
+
 class HMM_model:
     def __init__(self, tag2idx):
         self.tag2idx = tag2idx  # tag2idx字典
@@ -117,12 +127,10 @@ class HMM_model:
 
     def predict_to_List(self, s):
         results = self.viterbi(s)
-        char_list = []
-        tag_list = []
+        data_list = []
         for i in range(len(s)):
-            char_list.append(s[i])
-            tag_list.append(results[i])
-        return char_list, tag_list
+            data_list.append([s[i], results[i]])
+        return data_list
 
     def valid(self, valid_data):
         y_pred = []
@@ -169,3 +177,8 @@ model.predict('张三在北京的微软公司工作。')
 print("\n")
 model.predict('马云在杭州创办了阿里巴巴。')
 
+test_chars = []
+for item in valid_data:
+    test_chars.extend(item[0])
+test_predict_res = model.predict_to_List(test_chars)
+output_data('./data/test_predict.txt', test_predict_res)
